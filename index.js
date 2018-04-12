@@ -50,7 +50,7 @@ function bindHTTPConnection() {
 	app.use(bodyParser.urlencoded({ extended: true }));
 	app.use(bodyParser.json({ type: 'application/json' }));
 
-	app.listen(8080, function() {
+	app.listen(8000, function() {
 		console.log('Example app listening on port 8080!');
 	});
 }
