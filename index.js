@@ -24,7 +24,12 @@ function bindRoutes() {
 		res.json(req.body);
 	});
 
-	app.post('/login', users.login, function (req, res) {
+	app.post('/user/login', users.login, function (req, res) {
+		console.log(req.body);
+		res.json(req.body);
+	});
+
+	app.post('/user/saveUser', users.saveUser, function (req, res) {
 		console.log(req.body);
 		res.json(req.body);
 	});
