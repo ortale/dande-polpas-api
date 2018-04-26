@@ -13,7 +13,7 @@ class FormHelper {
 
 		day = day.toString().length == 1 ? '0' + day : day;
 
-		return year  + '-' + monthValues[monthIndex] + '-' + day;
+		return year  + '-' + monthValues[monthIndex] + '-' + day + " 00:00:00";
 	}
 }
 module.exports = FormHelper;
