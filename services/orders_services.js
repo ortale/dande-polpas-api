@@ -53,7 +53,7 @@ exports.saveOrder = function save(req, res, next) {
 	var result = saveOrder(order);
 
 	var notificationsConnection = NotificationsConnetion.GetConnection();
-	notificationsConnection.emit('CH01', { hello: 'world' });
+	notificationsConnection.emit('saveOrder', result);
 
 	return res.json(result);
 };
