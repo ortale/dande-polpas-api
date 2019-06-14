@@ -21,7 +21,7 @@ exports.findAll = function retrieveDiscounts(req, res, next) {
 			else {
 				req.user = decode;
 
-				var sql = 'SELECT * FROM discounts';
+				var sql = 'SELECT * FROM orders';
 				var con = databaseConfig.databaseConnect();
 				con.query(sql, function (err, result, fields) {
 					if (err) throw err;

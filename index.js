@@ -6,6 +6,7 @@ var app = express();
 // services requirements
 var users = require('./services/users_services');
 var orders = require('./services/orders_services');
+var polpas = require('./services/polpas_services');
 const NotificationsConnetion = require('./config/notifications_connection');
 
 // call bindings functions
@@ -16,22 +17,21 @@ var mSocket;
 
 // bindings
 function bindRoutes() {
-	/*
-	app.get('/discounts', discounts.findAll, function (req, res, next) {
+	app.get('/polpa/getAll', polpas.getAll, function (req, res, next) {
 		console.log(req.body);
 		res.json(req.body);
 	});
 
+	/*
 	app.get('/establishment_types', establishment_types.findAll, function (req, res, next) {
 		console.log(req.body);
 		res.json(req.body);
 	});
+	*/
 
 	app.post('/user/login', users.login, function (req, res) {
-		console.log(req.body);
 		res.json(req.body);
 	});
-	*/
 
 	app.post('/user/saveUser', users.saveUser, function (req, res) {
 		console.log(req.body);

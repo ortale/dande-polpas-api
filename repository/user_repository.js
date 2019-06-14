@@ -6,47 +6,23 @@ var security = require('../config/security');
 var User = require("../model/user.js");
 var FormHelper = require("../helper/form_helper.js");
 
-exports.login = function retrieveDiscounts(req, res, next) {
-	var user = new User(req.body);
-
-	/*
-	var password = security.testPassword(req.body.password);
-
-	var password = "$2a$10$16o7BF3B6LKy0BaKOPMLYO5z30yo1JJdHUE6sJwXAEakDE1GYnSVq";
+exports.login = function login(userModel) {
+	var user = userModel;
 
 	var connection = databaseConfig.databaseConnect();
 
-	var sql = "SELECT * FROM users WHERE username = '" + user + "' AND password = '" + password + "'";
-	connection.query(sql, function (err, result, fields) {
+	var sql = "SELECT * FROM users WHERE username = '" + user.username + "' AND password = '" + user.password + "'";
+	
+	return connection.query(sql, function (err, result, fields) {
 		if (err) throw err;
-			connection.end();
+			
 		if (!err) {
-			if (result.length > 0) {
-				var token = jwt.sign({ email: user.user, fullName: user.name, _id: user.id}, 'RESTFULAPIs');
-				var success = {
-					"success" : true,
-					"message" : "Login efetuado com sucesso",
-					"token"	  : token
-				};
-				return res.json(success);
-			}
-
-			else {
-				var success = {
-					"success" : false,
-					"message" : "Usuario ou senha invalido",
-					"token"	  : null
-				};
-				res.statusCode = 401;
-				return res.json(success);
-			}
+			connection.end();
+			return result.length > 0;
 		}
-		else {
-			res.statusCode = 500;
-			return res.json({ errors: ['Error while performing Query.'] });
-		}
+		
+		return false;
 	});
-	*/
 };
 
 exports.save = function save(userModel) {
